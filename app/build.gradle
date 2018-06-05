@@ -38,14 +38,12 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation project(path: ':baseproject')
-
+    implementation project(':baseproject')
     //support官方库
     implementation support.constraintLayout
     implementation support.multidex
@@ -56,7 +54,7 @@ dependencies {
     implementation support.gridlayout
     implementation support.annotations
     implementation support.vectorDrawable
-//    println ''
+    //    println ''
     implementation ext.butterknife
     annotationProcessor ext.butterknifeCompiler
     //项目必备
@@ -78,5 +76,4 @@ dependencies {
     implementation ext.rxLife
     implementation ext.rxBinding
     implementation ext.universalimageloader
-
 }

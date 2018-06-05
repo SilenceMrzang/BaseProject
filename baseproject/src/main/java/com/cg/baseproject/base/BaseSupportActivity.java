@@ -4,24 +4,16 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
-import com.cg.baseproject.R;
 import com.cg.baseproject.manager.ActivityStackManager;
-import com.cg.baseproject.manager.ScreenManager;
 import com.cg.baseproject.manager.ScreenManagerSupportActivity;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import me.yokeyword.fragmentation.SupportActivity;
 import me.yokeyword.fragmentation_swipeback.SwipeBackActivity;
 
 /**
@@ -32,20 +24,27 @@ import me.yokeyword.fragmentation_swipeback.SwipeBackActivity;
  */
 public abstract class BaseSupportActivity extends SwipeBackActivity {
     private static final String TAG = "BaseSupportActivity";
-    protected LinearLayout badnetworkLayout, loadingLayout,baseactivityLayout;
+    protected LinearLayout badnetworkLayout, loadingLayout, baseactivityLayout;
     protected LayoutInflater inflater;
     protected boolean isStatusBar = false;//是否沉浸状态栏
     protected boolean isFullScreen = false;//是否允许全屏
     protected boolean isScreenPortrait = true;//是否禁止旋转屏幕
     protected Context ctx;//Context
     private boolean isDebug;// 是否输出日志信息
-    protected abstract int getActivityLayoutId();////布局中Fragment的ID
-    protected abstract void initView();//初始化界面
-    protected abstract void registerListener();//绑定事件
-    protected abstract void initData();// 初始化数据,请求网络数据等
+
+    public abstract int getActivityLayoutId();////布局中Fragment的ID
+
+    public abstract void initView();//初始化界面
+
+    public abstract void registerListener();//绑定事件
+
+    public abstract void initData();// 初始化数据,请求网络数据等
+
     //布局中Fragment的ID
-    protected abstract int getFragmentContentId();
-    protected abstract void setScreenManager();
+    public abstract int getFragmentContentId();
+
+    public abstract void setScreenManager();
+
     private ScreenManagerSupportActivity screenManager;
     Unbinder unbinder;
 
@@ -62,16 +61,16 @@ public abstract class BaseSupportActivity extends SwipeBackActivity {
         initData();
         ctx = this;
     }
-    
 
-    private void initScreenManage(){
+
+    private void initScreenManage() {
         setScreenManager();
         screenManager = ScreenManagerSupportActivity.getInstance();
         screenManager.setStatusBar(isStatusBar, this);
         screenManager.setScreenRoate(isScreenPortrait, this);
         screenManager.setFullScreen(isFullScreen, this);
     }
-    
+
     /**
      * 跳转Activity
      * skip Another Activity
@@ -93,7 +92,7 @@ public abstract class BaseSupportActivity extends SwipeBackActivity {
         ActivityStackManager.getActivityStackManager().popAllActivity();//remove all activity.
         System.exit(0);//system exit.
     }
-    
+
 
     //添加fragment
     protected void addFragment(BaseSupportFragment fragment) {

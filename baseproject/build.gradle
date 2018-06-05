@@ -69,8 +69,8 @@ dependencies {
     implementation ext.okhttpLoggingInterceptor
     implementation ext.volley
     //项目基础库
-    implementation ext.fragmentation
-    implementation ext.fragmentationSwipeback
+    api ext.fragmentation
+    api ext.fragmentationSwipeback
     implementation ext.butterknife
     annotationProcessor ext.butterknifeCompiler
     //Converter

@@ -1,45 +1,37 @@
 package com.ivy.baseproject.test.sample;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-
-import com.cg.baseproject.base.BaseActivity;
 import com.cg.baseproject.base.BaseSupportActivity;
-import com.cg.baseproject.base.BaseTempActivity;
 import com.ivy.baseproject.test.R;
-
-import butterknife.ButterKnife;
 
 public class SampleFragmentActivity extends BaseSupportActivity {
 
     @Override
-    protected int getActivityLayoutId() {
+    public int getActivityLayoutId() {
         return R.layout.activity_samplefragment_main;
     }
 
     @Override
-    protected void initView() {
+    public void initView() {
 
     }
 
     @Override
-    protected void registerListener() {
+    public void registerListener() {
 
     }
 
     @Override
-    protected void initData() {
+    public void initData() {
 
     }
 
     @Override
-    protected int getFragmentContentId() {
+    public int getFragmentContentId() {
         return 0;
     }
 
     @Override
-    protected void setScreenManager() {
+    public void setScreenManager() {
 
     }
 
